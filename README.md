@@ -1,2 +1,641 @@
-# daniellesportfolio
-My personal marketing portfolio template
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Danielle Drewitt-Smith | Marketing Portfolio</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #ffffff;
+      color: #1f1f1f;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* SIDEBAR */
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 260px;
+      height: 100vh;
+      padding: 38px 28px;
+      background: #ffffff;
+      border-right: 1px solid #f0f0f0;
+      z-index: 10;
+    }
+
+    .name {
+      font-size: 27px;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .descriptor {
+      font-size: 13px;
+      color: #d68a8a;
+      margin-bottom: 28px;
+    }
+
+    .nav {
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+    }
+
+    .nav a {
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      color: #8a8a8a;
+      text-transform: uppercase;
+    }
+
+    .nav a:hover {
+      color: #111111;
+    }
+
+    .nav a.active {
+      color: #111111;
+      text-decoration: underline;
+    }
+
+    /* MAIN */
+
+    .main {
+      margin-left: 260px;
+    }
+
+    section {
+      padding: 90px 70px;
+    }
+
+    .eyebrow {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      color: #9b9b9b;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      font-weight: 500;
+      margin-bottom: 50px;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .hero-image-wrap {
+      position: relative;
+      min-height: 450px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .watercolour {
+      position: absolute;
+      width: 78%;
+      height: 78%;
+      border-radius: 45% 55% 50% 40%;
+      background:
+        radial-gradient(circle at 35% 30%, rgba(255, 185, 185, 0.55), transparent 45%),
+        radial-gradient(circle at 65% 60%, rgba(255, 214, 214, 0.65), transparent 50%);
+      filter: blur(2px);
+      transform: rotate(-6deg);
+    }
+
+    .photo-placeholder {
+      position: relative;
+      width: 58%;
+      aspect-ratio: 4 / 5;
+      background: #e9e9e9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 30px;
+      color: #777;
+      font-size: 13px;
+      box-shadow: 35px 0 0 rgba(248, 248, 248, 0.8);
+    }
+
+    .hero-copy h1 {
+      font-size: 17px;
+      font-weight: 500;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .hero-copy p {
+      font-size: 13px;
+      color: #6f6f6f;
+      margin-bottom: 16px;
+      max-width: 720px;
+    }
+
+    /* ACCORDION */
+
+    .accordion {
+      margin-top: 28px;
+      border: 1px solid #e5e5e5;
+    }
+
+    .accordion-item + .accordion-item {
+      border-top: 1px solid #e5e5e5;
+    }
+
+    .accordion-button {
+      width: 100%;
+      border: 0;
+      background: #ffffff;
+      padding: 16px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-align: left;
+    }
+
+    .accordion-button.active {
+      background: #111111;
+      color: #ffffff;
+    }
+
+    .accordion-content {
+      display: none;
+      padding: 20px 26px;
+      font-size: 13px;
+      color: #666666;
+    }
+
+    .accordion-content.open {
+      display: block;
+    }
+
+    .accordion-content ul {
+      columns: 2;
+      padding-left: 18px;
+    }
+
+    /* HIGHLIGHTS */
+
+    .highlights {
+      background: #ffffff;
+    }
+
+    .highlight-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px 70px;
+    }
+
+    .highlight-card {
+      display: grid;
+      grid-template-columns: 66px 1fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .icon-box {
+      width: 66px;
+      height: 66px;
+      background: #f6f6f6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+    }
+
+    .highlight-card h3 {
+      font-size: 12px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    .highlight-card ul {
+      padding-left: 18px;
+      font-size: 13px;
+      color: #6c6c6c;
+    }
+
+    /* FEATURED WORK */
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .project-image {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      background: #eeeeee;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #888;
+      font-size: 13px;
+      margin-bottom: 18px;
+    }
+
+    .project-meta {
+      font-size: 10px;
+      color: #aaa;
+      margin-bottom: 8px;
+    }
+
+    .project-title {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      margin-bottom: 18px;
+    }
+
+    .project-link {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .project-link:hover {
+      text-decoration: underline;
+    }
+
+    /* CONTACT */
+
+    .contact {
+      background: #fafafa;
+      padding-top: 55px;
+      padding-bottom: 55px;
+    }
+
+    .contact h2 {
+      font-size: 26px;
+      font-weight: 400;
+      margin-bottom: 12px;
+    }
+
+    .contact p {
+      font-size: 13px;
+      color: #6b6b6b;
+      margin-bottom: 24px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 13px 24px;
+      background: #263a73;
+      color: #ffffff;
+      border-radius: 30px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 900px) {
+      .sidebar {
+        position: static;
+        width: 100%;
+        height: auto;
+        border-right: 0;
+        border-bottom: 1px solid #efefef;
+      }
+
+      .nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      .main {
+        margin-left: 0;
+      }
+
+      section {
+        padding: 60px 26px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .highlight-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .work-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .accordion-content ul {
+        columns: 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <aside class="sidebar">
+    <div class="name">Danielle Drewitt-Smith</div>
+    <div class="descriptor">Marketing</div>
+
+    <nav class="nav">
+      <a href="#home" class="active">Home</a>
+      <a href="#highlights">Highlights</a>
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </aside>
+
+  <main class="main">
+
+    <section class="hero" id="home">
+      <div class="hero-image-wrap">
+        <div class="watercolour"></div>
+
+        <div class="photo-placeholder">
+          Replace this with your professional portrait
+        </div>
+      </div>
+
+      <div class="hero-copy" id="about">
+        <div class="eyebrow">Welcome</div>
+
+        <h1>Hello! I’m Danielle.</h1>
+
+        <p>
+          What I enjoy most about marketing is understanding people — what influences
+          their choices, what matters to them, and why they respond to certain ideas.
+        </p>
+
+        <p>
+          I love taking those insights and turning them into strategies and creative ideas
+          that genuinely connect. I’m naturally curious, so I’m always interested in digging
+          deeper into the “why” behind a problem and finding a way to turn that understanding
+          into something meaningful and effective.
+        </p>
+
+        <p>
+          My interests span consumer insight, brand strategy, integrated marketing,
+          digital and social media, and campaign development.
+        </p>
+
+        <div class="accordion">
+
+          <div class="accordion-item">
+            <button class="accordion-button active">
+              Marketing skills
+              <span>↑</span>
+            </button>
+
+            <div class="accordion-content open">
+              <ul>
+                <li>Consumer insight</li>
+                <li>Brand positioning</li>
+                <li>Integrated marketing</li>
+                <li>Digital strategy</li>
+                <li>Social media strategy</li>
+                <li>Campaign planning</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-button">
+              Marketing & business toolkit
+              <span>↓</span>
+            </button>
+
+            <div class="accordion-content">
+              <ul>
+                <li>PowerPoint</li>
+                <li>Excel</li>
+                <li>Canva</li>
+                <li>Google Analytics</li>
+                <li>Meta Business Suite</li>
+                <li>Adobe Premiere Pro</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="highlights" id="highlights">
+      <div class="eyebrow">What I’ve done</div>
+      <h2 class="section-title">Key Highlights</h2>
+
+      <div class="highlight-grid">
+
+        <div class="highlight-card">
+          <div class="icon-box">◎</div>
+          <div>
+            <h3>Consumer Insight & Strategy</h3>
+            <ul>
+              <li>Audience and market research</li>
+              <li>Segmentation and positioning</li>
+              <li>Insight-led campaign development</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="highlight-card">
+          <div class="icon-box">✦</div>
+          <div>
+            <h3>Integrated Marketing</h3>
+            <ul>
+              <li>Campaign strategy and creative platforms</li>
+              <li>Cross-channel planning</li>
+              <li>Consumer journey development</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="highlight-card">
+          <div class="icon-box">↗</div>
+          <div>
+            <h3>Digital & Social</h3>
+            <ul>
+              <li>Social media audits</li>
+              <li>Content strategy and calendars</li>
+              <li>Performance measurement</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="highlight-card">
+          <div class="icon-box">▦</div>
+          <div>
+            <h3>Marketing Analytics</h3>
+            <ul>
+              <li>KPI frameworks</li>
+              <li>Campaign measurement</li>
+              <li>Data interpretation and storytelling</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="highlight-card">
+          <div class="icon-box">✎</div>
+          <div>
+            <h3>Content & Communication</h3>
+            <ul>
+              <li>Copywriting and presentation development</li>
+              <li>Educational and social content</li>
+              <li>Clear, audience-focused communication</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="highlight-card">
+          <div class="icon-box">◌</div>
+          <div>
+            <h3>International Marketing</h3>
+            <ul>
+              <li>Cross-cultural marketing projects</li>
+              <li>Market entry and localisation strategy</li>
+              <li>International study experience</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="eyebrow">What I’ve done</div>
+      <h2 class="section-title">Featured Work</h2>
+
+      <div class="work-grid">
+
+        <article>
+          <div class="project-image">
+            Add Beyond Meat campaign image
+          </div>
+
+          <div class="project-meta">2026 | Integrated Marketing Communications</div>
+
+          <div class="project-title">
+            Beyond Meat — It’s a No-Brainer
+          </div>
+
+          <a class="project-link" href="#">
+            View →
+          </a>
+        </article>
+
+        <article>
+          <div class="project-image">
+            Add Velocity Empowerment image
+          </div>
+
+          <div class="project-meta">2026 | Digital & Social Media</div>
+
+          <div class="project-title">
+            Velocity Empowerment — Social Media Strategy
+          </div>
+
+          <a class="project-link" href="#">
+            View →
+          </a>
+        </article>
+
+        <article>
+          <div class="project-image">
+            Add Tiny Tastes image
+          </div>
+
+          <div class="project-meta">2026 | Marketing Internship</div>
+
+          <div class="project-title">
+            Tiny Tastes — Go-to-Market & Content Strategy
+          </div>
+
+          <a class="project-link" href="#">
+            View →
+          </a>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <h2>Thanks for visiting! Let’s connect.</h2>
+
+      <p>
+        I’m always happy to connect about marketing opportunities, ideas and collaborations.
+      </p>
+
+      <a class="button" href="mailto:YOUR-EMAIL-HERE">
+        Contact Me
+      </a>
+    </section>
+
+  </main>
+
+  <script>
+    const buttons = document.querySelectorAll(".accordion-button");
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const content = button.nextElementSibling;
+        const isOpen = content.classList.contains("open");
+
+        document.querySelectorAll(".accordion-content").forEach((item) => {
+          item.classList.remove("open");
+        });
+
+        document.querySelectorAll(".accordion-button").forEach((item) => {
+          item.classList.remove("active");
+          item.querySelector("span").textContent = "↓";
+        });
+
+        if (!isOpen) {
+          content.classList.add("open");
+          button.classList.add("active");
+          button.querySelector("span").textContent = "↑";
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
